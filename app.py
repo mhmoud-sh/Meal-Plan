@@ -170,36 +170,34 @@ except Exception as e:
 # Initialize session state
 if 'selected_foods' not in st.session_state:
     st.session_state.selected_foods = []
-if 'theme' not in st.session_state:
-    st.session_state.theme = 'light'
 
 # Main app
 st.set_page_config(page_title="قائمة الأطعمة لمرضى غسيل الكلى", layout="wide")
-st.markdown(f"""
+st.markdown("""
     <style>
-    body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button {{
+    body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button {
         font-family: 'Noto Sans Arabic', sans-serif !important;
         direction: rtl;
-        background-color: {'#1a1a1a' if st.session_state.theme == 'dark' else '#ffffff'};
-        color: {'#ffffff' if st.session_state.theme == 'dark' else '#000000'};
-    }}
-    .stButton>button {{
-        background-color: {'#4CAF50' if st.session_state.theme == 'light' else '#45a049'};
-        color: white;
-    }}
-    @media (max-width: 600px) {{
-        .stColumn {{
+        background-color: #ffffff;
+        color: #000000;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+    }
+    @media (max-width: 600px) {
+        .stColumn {
             width: 100% !important;
-        }}
-    }}
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
-
-# Theme toggle
-st.sidebar.header("الإعدادات")
-if st.sidebar.button("تبديل الوضع (فاتح/داكن)"):
-    st.session_state.theme = 'dark' if st.session_state.theme == 'light' else 'light'
-    st.rerun()
 
 # Sidebar for filters
 with st.sidebar:
@@ -517,4 +515,4 @@ with tab3:
 try:
     conn.close()
 except Exception as e:
-    logger.error(f"Database connection close failed: {e}")
+    logger.error(f"Database connection close failed: {e}")

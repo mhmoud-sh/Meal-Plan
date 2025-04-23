@@ -5,7 +5,7 @@ A Streamlit app for dialysis patients to plan and track meals, with meal templat
 1. Install dependencies: `pip install -r requirements.txt`
 2. Add `NotoSansArabic-Regular.ttf` for PDF exports.
 3. Create `.env` with `DB_PATH=meal_logs.db`.
-4. Run: `streamlit run appp.py`
+4. Run: `streamlit run app.py`
 
 ## Deployment
 - Use Streamlit Cloud or Heroku.
